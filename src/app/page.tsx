@@ -2,7 +2,6 @@ import { Metadata } from "next";
 import App from "./app";
 import { APP_NAME, APP_DESCRIPTION, APP_OG_IMAGE_URL } from "~/lib/constants";
 import { getFrameEmbedMetadata } from "~/lib/utils";
-import { PageProps } from 'next/app';
 
 export const revalidate = 300;
 
