@@ -73,7 +73,7 @@ function App() {
       setSongLink(songLinkUrl);
     } catch {
       setResult('An unknown error occurred. Please try again.');
-    }
+  }
     finished = true;
     if (maxSpinner) clearTimeout(maxSpinner);
     await minSpinner;
