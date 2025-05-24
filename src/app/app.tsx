@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import axios from 'axios';
 import { sdk } from '@farcaster/frame-sdk';
@@ -20,7 +20,7 @@ function App() {
     setLoading(true);
     setResult('');
     setSongLink('');
-    let minSpinner = new Promise((resolve) => setTimeout(resolve, 700));
+    const minSpinner = new Promise((resolve) => setTimeout(resolve, 700));
     let maxSpinner: NodeJS.Timeout | null = null;
     let finished = false;
     try {
@@ -71,9 +71,13 @@ function App() {
         `Your MOOD today is <span class="result-mood">${selectedMood.toUpperCase()}</span><div>Song: ${track.name} by ${track.artist}</div>`
       );
       setSongLink(songLinkUrl);
-    } catch (error: any) {
-      console.error('Error details:', error.message, error.response?.data);
-      setResult(`Error: ${error.message}. Please try again.`);
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        console.error('Error details:', error.message);
+        setResult(`Error: ${error.message}. Please try again.`);
+      } else {
+        setResult('An unknown error occurred. Please try again.');
+      }
     }
     finished = true;
     if (maxSpinner) clearTimeout(maxSpinner);

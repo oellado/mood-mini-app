@@ -29,6 +29,8 @@ export function logEvent(
       events: [event]
     })
   }).catch(error => {
-    console.error('Amplitude tracking error:', error);
+    if (error instanceof Error) {
+      console.error('Amplitude tracking error:', error);
+    }
   });
 }
