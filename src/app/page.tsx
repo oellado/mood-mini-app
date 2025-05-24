@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import App from "./app";
 import { APP_NAME, APP_DESCRIPTION, APP_OG_IMAGE_URL } from "~/lib/constants";
-import { getFrameEmbedMetadata } from "~/lib/utils";
+import { getFrameEmbedMetadata } from "~/lib/utils";  
 
 export const revalidate = 300;
 
@@ -19,6 +19,6 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default function Home() {
+export default function Page({ params }: { params: { fid: string } }) {
   return (<App />);
 }
