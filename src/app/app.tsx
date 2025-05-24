@@ -92,9 +92,9 @@ function App() {
         text: `My mood today is ${mood}! Listening to ${song}${artist}. Check it out: https://mood-randomizer.vercel.app`,
         embeds: [songLink],
       });
-      catch {
-        // ...same code, or nothing
-      }
+    } catch {
+      // ...same code, or nothing
+    }
   };
 
   const tryAgain = () => {
