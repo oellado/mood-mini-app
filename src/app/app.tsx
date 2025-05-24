@@ -71,13 +71,8 @@ function App() {
         `Your MOOD today is <span class="result-mood">${selectedMood.toUpperCase()}</span><div>Song: ${track.name} by ${track.artist}</div>`
       );
       setSongLink(songLinkUrl);
-    } catch (error: unknown) {
-      if (error instanceof Error) {
-        console.error('Error details:', error.message);
-        setResult(`Error: ${error.message}. Please try again.`);
-      } else {
-        setResult('An unknown error occurred. Please try again.');
-      }
+    } catch {
+      setResult('An unknown error occurred. Please try again.');
     }
     finished = true;
     if (maxSpinner) clearTimeout(maxSpinner);
