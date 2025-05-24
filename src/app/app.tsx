@@ -73,7 +73,7 @@ function App() {
       setSongLink(songLinkUrl);
     } catch {
       setResult('An unknown error occurred. Please try again.');
-  }
+    }
     finished = true;
     if (maxSpinner) clearTimeout(maxSpinner);
     await minSpinner;
@@ -92,9 +92,9 @@ function App() {
         text: `My mood today is ${mood}! Listening to ${song}${artist}. Check it out: https://mood-randomizer.vercel.app`,
         embeds: [songLink],
       });
-    } catch (error) {
-      alert('Error sharing to Farcaster. Try again!');
-    }
+      catch {
+        // ...same code, or nothing
+      }
   };
 
   const tryAgain = () => {
