@@ -14,7 +14,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     });
     res.setHeader('Access-Control-Allow-Origin', '*');
     return res.status(200).json(response.data);
-  } catch {
-    // nothing here
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      console.error('Error details:', error.message);
+      return res.status(500).json({ error: `Error: ${error.message}. Please try again.` });
+    } else {
+      return res.status(500).json({ error: 'An unknown error occurred. Please try again.' });
+    }
   }
 }
